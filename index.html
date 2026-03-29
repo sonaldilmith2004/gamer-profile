@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        const fullText = "The King In The North!";
+        let currentText = "";
+        let isDeleting = false;
+        let index = 0;
+
+        function typeTitle() {
+            if (!isDeleting) {
+                currentText = fullText.slice(0, ++index);
+                if (currentText === fullText) isDeleting = true;
+            } else {
+                currentText = fullText.slice(0, --index);
+                if (index === 0) isDeleting = false;
+            }
+
+            document.title = currentText;
+
+            let speed = isDeleting ? 200 : 250; // typing vs backspacing speed
+            setTimeout(typeTitle, speed);
+        }
+
+        typeTitle();
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Profiles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Enter Screen Overlay -->
+    <div class="enter-screen" id="enter-screen">
+        <video id="splash-video" autoplay loop muted playsinline>
+            <source src="jon-snow-game-of-thrones.3840x2160.mp4" type="video/mp4">
+        </video>
+        <div class="splash-overlay"></div>
+        <div class="enter-content">
+            <h1 class="enter-title animated-gradient-text"><i class="fas fa-dragon"></i> Gamer Profile <i
+                    class="fas fa-dragon"></i></h1>
+            <p class="enter-subtitle">Forged in Code, Tempered in Battle</p>
+            <button class="enter-button" id="enter-btn">
+                <span>Enter Gamer Profile</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    <!-- Video Background Container -->
+    <div class="video-container">
+        <video id="bg-video" autoplay loop playsinline>
+            <source src="GOT1.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <!-- A dark overlay to make text readable -->
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Fireflakes Canvas -->
+    <canvas id="fireflakes-canvas"></canvas>
+
+    <!-- Floating Audio Control Panel -->
+    <div class="audio-control-container">
+        <span id="volume-percentage" class="volume-percentage">50%</span>
+        <div class="volume-slider-wrapper">
+            <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.01" value="0.5"
+                title="Volume">
+        </div>
+        <div class="mute-toggle-wrapper">
+            <canvas id="audio-visualizer-icon"></canvas>
+            <button id="mute-toggle" class="mute-toggle-btn" title="Toggle Sound">
+                <i class="fas fa-volume-up"></i>
+            </button>
+        </div>
+    </div>
+
+    <main class="profile-content">
+        <header class="profile-header">
+            <!-- Discord Avatar, will be updated via JS -->
+            <div class="avatar-container">
+                <img src="" alt="" id="discord-decoration" class="avatar-decoration" style="display: none;">
+                <img src="https://via.placeholder.com/120" alt="Profile" id="discord-avatar" class="profile-pic">
+                <div class="status-indicator offline" id="status-dot"></div>
+            </div>
+
+            <h1 class="name" id="discord-name">Loading...</h1>
+            <p class="role">Software Engineer & Gamer</p>
+            <p class="status-quote animated-gradient-text" id="status-quote"></p>
+        </header>
+
+        <section class="bio">
+            <p>Hey there! I build modern web applications and love playing games. Check out my live Discord activity
+                below.</p>
+        </section>
+
+        <!-- Discord Live Activity Track -->
+        <section class="discord-activity" id="discord-activity">
+
+            <div class="activity-content" id="activity-content">
+                <p class="status-text">Fetching live data...</p>
+            </div>
+        </section>
+
+        <footer class="social-links">
+            <a href="https://discord.gg/hGNX2Rkp" target="_blank" class="social-btn" title="Discord">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="https://youtube.com/@OneKord" target="_blank" class="social-btn" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://steamcommunity.com/profiles/76561199782478658/" target="_blank" class="social-btn" title="Steam">
+                <i class="fab fa-steam"></i>
+            </a>
+            <a href="mailto:sonaldilmithavenger01@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
+            <a href="https://open.spotify.com/user/31boyaakhyepwn5tywmfdofkan2e" target="_blank" class="social-btn"><i
+                    class="fab fa-spotify"></i></a>
+        </footer>
+
+        <div class="view-counter" id="view-counter-container" style="margin-top: 1.5rem;">
+            <i class="fas fa-eye"></i>
+            <span id="visit-count">0</span> views
+        </div>
+    </main>
+
+    <!-- Audio Visualizer Canvas -->
+
+    <script src="script.js"></script>
+</body>
+
+</html>
