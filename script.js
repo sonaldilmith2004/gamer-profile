@@ -210,10 +210,15 @@ function updateActivity(data) {
     // Find different types of activities to be more accurate
     const playingActivity = activities.find(a => a.type === 0);
     const streamingActivity = activities.find(a => a.type === 1);
+    const listeningActivity = activities.find(a => a.type === 2 && a.name !== "Spotify"); // YouTube Music / others
     const watchingActivity = activities.find(a => a.type === 3);
     const competingActivity = activities.find(a => a.type === 5);
 
-    const mainActivity = playingActivity || streamingActivity || watchingActivity || competingActivity;
+    // PRIORITY: If we have a music/watching activity (YouTube Music), we might want to show that over "Playing"
+    // especially since WatchDis uses "Watching" (Type 3) or "Listening" (Type 2)
+    const ytMusic = activities.find(a => a.name.toLowerCase().includes('youtube music') || a.details?.toLowerCase().includes('youtube music'));
+    
+    const mainActivity = ytMusic || listeningActivity || playingActivity || streamingActivity || watchingActivity || competingActivity;
 
     // --- 1. HANDLE CUSTOM STATUS QUOTE ---
     let quoteHtml = '';
@@ -274,8 +279,17 @@ function updateActivity(data) {
 
         let actionText = "Playing";
         if (mainActivity.type === 1) actionText = "Streaming";
+        if (mainActivity.type === 2) actionText = "Listening to";
         if (mainActivity.type === 3) actionText = "Watching";
         if (mainActivity.type === 5) actionText = "Competing in";
+
+        // Special case for YouTube Music - clean up the title
+        let activityName = mainActivity.name;
+        if (activityName === "YouTube Music" && actionText === "Listening to") {
+            // "Listening to YouTube Music" sounds better than "Listening to YouTube Music YT Music"
+        } else {
+            activityName = `${actionText} ${activityName}`;
+        }
 
         activityBodyHtml = `
             <div class="activity-card">
@@ -283,7 +297,7 @@ function updateActivity(data) {
                     ${activityVisual}
                 </div>
                 <div class="activity-details">
-                    <span class="activity-name">${actionText} ${mainActivity.name}</span>
+                    <span class="activity-name">${activityName}</span>
                     <span class="activity-details-text">${mainActivity.details || ''}</span>
                     <span class="activity-state">${mainActivity.state || ''}</span>
                 </div>
