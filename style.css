@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'Game Of Thrones';
-    src: url('Game of Thrones.ttf') format('truetype');
+    font-family: 'game of thrones';
+    src: url('game of thrones.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -91,7 +91,7 @@ body {
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-family: 'Game Of Thrones', sans-serif;
+    font-family: 'game of thrones', sans-serif;
 }
 
 .enter-button {
@@ -248,7 +248,7 @@ body {
 .name {
     font-size: 2rem;
     font-weight: 700;
-    font-family: 'Game Of Thrones', sans-serif;
+    font-family: 'game of thrones', sans-serif;
     background: linear-gradient(270deg, #a855f7, #ec4899, #06b6d4, #a855f7);
     background-size: 300% 300%;
     -webkit-background-clip: text;
@@ -318,7 +318,7 @@ body {
     display: inline-block;
     margin-bottom: 1rem;
     color: #f8fafc;
-    font-family: 'Game Of Thrones', sans-serif;
+    font-family: 'game of thrones', sans-serif;
     font-size: 0.7rem;
     letter-spacing: 1.5px;
     word-spacing: 1px;
