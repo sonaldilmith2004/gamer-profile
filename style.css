@@ -88,7 +88,7 @@ body {
 .enter-subtitle {
     color: #fca5a5;
     margin-bottom: 2rem;
-    font-size: 0.7rem;
+    font-size: 0.95rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-family: 'PirataOne', sans-serif;
@@ -322,7 +322,7 @@ body {
 }
 
 .name {
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: 700;
     font-family: 'PirataOne', sans-serif;
     background: linear-gradient(270deg, #ef4444, #f97316, #fbbf24, #ef4444);
@@ -394,7 +394,7 @@ body {
     margin-bottom: 1rem;
     color: #f8fafc;
     font-family: 'PirataOne', sans-serif;
-    font-size: 0.7rem;
+    font-size: 0.95rem;
     letter-spacing: 1.5px;
     word-spacing: 1px;
 }
